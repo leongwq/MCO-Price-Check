@@ -15,9 +15,7 @@ axiosRetry(axios, {
   retries: 5
 });
 
-scheduleJob();
-
-scheduleJob = () => {
+const scheduleJob = () => {
   // Check for auto book
   cron.schedule('*/10 * * * *', async () => {
     ping(); // For heroku
@@ -39,9 +37,12 @@ const sendPrice = async (price) => {
   }
 }
 
-ping = () => {
+const ping = () => {
   axios.get(process.env.HEROKU_URL);
 }
+
+scheduleJob();
+
 
 
 
