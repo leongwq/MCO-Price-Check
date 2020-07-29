@@ -4,6 +4,9 @@ const axiosRetry = require('axios-retry');
 const cron = require('node-cron');
 const express = require('express')
 
+const app = express()
+const PORT = process.env.PORT || 3000;
+
 app.get('/', (req, res) => res.send('MCO Bot is alive!'))
 
 app.listen(PORT, () => console.log(`MCO bot listening on port:${PORT}`))
@@ -11,9 +14,6 @@ app.listen(PORT, () => console.log(`MCO bot listening on port:${PORT}`))
 axiosRetry(axios, {
   retries: 5
 });
-
-const app = express()
-const PORT = process.env.PORT || 3000;
 
 scheduleJob();
 
