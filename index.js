@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 const sendPrice = async (price) => {
   try {
-    const response = await axios.get('https://api.telegram.org/bot' + process.env.TELEGRAM_TOKEN + '/sendMessage?chat_id=-1001318257998&text=The current price for MCO is: SGD ' + price);
+    const response = await axios.get('https://api.telegram.org/bot' + process.env.TELEGRAM_TOKEN + '/sendMessage?chat_id=' + process.env.TELEGRAM_CHAT_ID + '&text=The current price for MCO is: SGD ' + price);
     console.log(response);
   } catch (error) {
     console.error(error);
