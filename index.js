@@ -20,7 +20,7 @@ const scheduleJob = () => {
   cron.schedule('*/10 * * * *', async () => {
     ping(); // For heroku
     try {
-      const response = await axios.get('https://api.coingecko.com/api/v3/coins/monaco?localization=false');
+      const response = await axios.get('https://api.coingecko.com/api/v3/coins/crypto-com-chain?localization=false');
       await sendPrice(response.data.market_data.current_price.sgd);
     } catch (error) {
       console.error(error);
@@ -30,7 +30,7 @@ const scheduleJob = () => {
 
 const sendPrice = async (price) => {
   try {
-    const response = await axios.get('https://api.telegram.org/bot' + process.env.TELEGRAM_TOKEN + '/sendMessage?chat_id=' + process.env.TELEGRAM_CHAT_ID + '&text=The current price for MCO is: SGD ' + price);
+    const response = await axios.get('https://api.telegram.org/bot' + process.env.TELEGRAM_TOKEN + '/sendMessage?chat_id=' + process.env.TELEGRAM_CHAT_ID + '&text=The current price for CRO is: SGD ' + price);
     console.log(response);
   } catch (error) {
     console.error(error);
